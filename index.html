@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>プログラム学習教材</title>
+<meta charset="UTF-8" />
+<!-- script -->
+<!--[if IE]><script src="./scripts/excanvas.min.js" type="text/javascript" charset="utf-8"></script><![endif]-->
+<script type="text/javascript" src="./scripts/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="./scripts/main.js"></script>
+
+<!-- styles -->
+<link rel="stylesheet" href="./styles/main.css" type="text/css">
+</head>
+<body>
+	<div id="main">
+		<div id="gameArea">
+			<canvas width="512" height="512" id="field">非対応ブラウザです</canvas>
+		</div>
+		<div id="commandArea">
+			プログラムがここに表示されるよ。
+			<br>
+			<div id="commandField">
+				<table width="100%" class="commandTable">
+					<thead>
+						<tr>
+							<td class="lineNo" width="10%">行数</td>
+							<td class="command" width="45%">コマンド</td>
+							<td class="program" width="40%">プログラム</td>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- 行数が少ないほうが勝ち　コマンド数×実行回数で点数計算 -->
+		<div id="stepCountArea">
+		</div>
+		<div id="stageSellect" style="display: none">
+			<div id="stage1" class="stage" data-stage="1">ステージ１</div>
+			<div class="arrow">↓</div>
+			<div id="stage2" class="stage selectStage" data-stage="2">ステージ２</div>
+			<div class="arrow">↓</div>
+			<div id="stage3" class="stage disableStage" data-stage="3">ステージ３</div>
+			<div class="arrow">↓</div>
+			<div id="stage4" class="stage disableStage" data-stage="4">ステージ４</div>
+			<div class="arrow">↓</div>
+			<div id="stage5" class="stage disableStage" data-stage="5">ステージ５</div>
+		</div>
+	</div>
+	<div id="buttonArea">
+		コマンド入力
+		<br />
+		<span class="block">
+			<input type="button" value="一歩進む" id="goStrate" class="command" />
+			<input type="button" value="右を向く" id="turnRight" class="command" />
+		</span>
+		<span class="space"></span>
+		<span class="block">
+			<input type="button" value="「もし」 赤いマスの上に乗ったら" id="redWall" class="ifcommand command" />
+			<!-- 
+			<input type="button" value="「もし」 青いマスの上に乗ったら" id="blueWall" class="ifcommand command" />
+			 -->
+			<input type="button" value="「もし」 ここで終わり" id="endif" class="closeifcommand command" />
+		</span>
+		<br />
+		<br />
+		<!-- FIXME 操作ボタンを⇒にもって行く -->
+		操作ボタン
+		<br />
+		<span class="block">
+			<input type="button" value="実行する" id="step" />
+			<input type="button" value="繰り返し実行する" id="run" />
+		</span>
+		<span class="space"></span>
+		<span class="block">
+			<input type="button" value="最初からやり直す" id="stop" />
+			<input type="button" value="命令を消す" id="clear" />
+		</span>
+	</div>
+	<div id="gameover" class="floatBox">
+		<div class="header">
+		</div>
+		<div class="body">
+			<br/>
+			失敗。。。もう一度挑戦する？
+			<br/>
+			<img src="./images/test0.png" style="width:200px; height:200px;"/>
+			<br/>
+			<input type="button" value="挑戦する！" class="retry" />
+		</div>
+	</div>
+	<div id="gameclear" class="floatBox">
+		<div class="header">
+		</div>
+		<div class="body">
+			<br/>
+			成功！おめでとう！
+			<br/>
+			<br/>
+			<div id="score">
+				<table>
+					<tr>
+						<td class="leftTitle">コマンドスコア</td><td>:</td><td class="rightScore" id="commandScore">0</td>
+					</tr>
+					<tr>
+						<td class="leftTitle">操作スコア</td><td>:</td><td class="rightScore" id="stepScore">0</td>
+					</tr>
+					<tr><td colspan="3"><hr></td></tr>
+					<tr>
+						<td class="leftTitle">トータルスコア</td><td>:</td><td class="rightScore" id="totalScore">0</td>
+					</tr>
+				</table>
+			</div>
+			<input type="button" value="もう一度挑戦する！" class="retry" />
+			<input type="button" value="最初から挑戦する！" class="init" />
+			<input type="button" value="次のステージへ！" class="nextStage" />
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,178 @@
+#main>div {
+	float: left;
+	margin-left: 20px;
+	margin-top: 20px;
+}
+
+#gameArea>canvas {
+	border: 1px solid black;
+}
+
+#buttonArea {
+	clear: both;
+	padding: 10px 10px 10px 10px;
+	margin-top: 20px;
+	margin-left: 20px;
+}
+
+#buttonArea>input {
+	margin-top: 15px;
+	margin-right: 10px;
+}
+
+#clear {
+	background-color : #f88;
+	color : white;
+}
+#stop {
+	background-color : #f88;
+	color : white;
+}
+
+#commandField {
+	width: 500px;
+	height: 500px;
+	border: 1px solid gray;
+	border-left : 0px;
+	border-bottom : 0px;
+}
+
+.commandTable {
+	border-spacing : 0px;
+}
+
+.commandTable tr {
+	height : 24px;
+}
+
+.commandTable tr.currentCommand {
+	background-color : #CFC;
+}
+
+.commandTable td, .commandTable th{
+	border-left : 1px solid black;
+	border-bottom : 1px solid black;
+	padding-left : 5px;
+}
+
+td.indent {
+	padding-left : 20px;
+}
+
+#stepCountArea {
+	margin-top : 10px;
+	width : 70px;
+	float : left;
+}
+#stepCountArea img {
+	width : 70px;
+	height : 70px;
+}
+
+#stageSellect {
+	width: 200px;
+	height: 500px;
+	border: 1px dashed black;
+	text-align: center;
+}
+
+.stage {
+	width: 120px;
+	height: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+	padding: 5px;
+	color: black;
+	background: #FFF;
+	border-top: 3px solid #DDD;
+	border-left: 3px solid #DDD;
+	border-right: 3px solid #888;
+	border-bottom: 3px solid #888;
+}
+
+.selectStage {
+	color: red;
+}
+
+.disableStage {
+	color: #CCC;
+	background: #EEE;
+	border-top: 3px solid #888;
+	border-left: 3px solid #888;
+	border-right: 3px solid #DDD;
+	border-bottom: 3px solid #DDD;
+}
+
+.arrow {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+}
+
+input[type="button"] {
+	font-size: 1.0em;
+	font-weight: bold;
+	padding: 10px 30px;
+}
+
+.floatBox {
+	display: none;
+	position: absolute;
+	top: 130px;
+	left: 400px;
+	width: 400px;
+	height: 450px;
+	text-align: center;
+	border: 1px solid blue;
+	background-color: white;
+}
+
+.floatBox>.header {
+	width: 389px;
+	height: 20px;
+	text-align: right;
+	padding: 5px;
+	border: 1px solid blue;
+	background-color: #9999ff;
+}
+
+.floatBox>#close {
+	width: 8px;
+	height: 8px;
+	border: 1px solid black;
+	margin-right: 10px;
+	background-color: white;
+}
+
+.space {
+	margin-right: 50px;
+}
+
+.block {
+
+}
+
+#score {
+	width : 100%;
+	text-align : center;
+}
+
+#score table {
+	width : 70%;
+	margin : 20px auto 40px auto;
+	font-size : 20px;
+}
+
+#score .leftTitle {
+	width : 60%;
+	text-align : right;
+}
+
+#score .rightScore {
+	text-align : left;
+	font-weight: bold;
+	font-style: italic;
+	font-size : 25px;
+	color : red;
+}
