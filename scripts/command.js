@@ -47,11 +47,11 @@ var Command = function(command, comment, index, commandType) {
 }
 
 var CommandRedWall = function(index) {
-	Command.apply(this, ["if ( isNextRedWall() ) {", "もし赤いマスの上に乗ったら", index, COMMAND_TYPE.redWall]);
+	Command.apply(this, ["if ( isNextRedWall() ) ", "もし赤いマスの上に乗ったら", index, COMMAND_TYPE.redWall]);
 	this.exec = function(game) {
 		var object = this.getCurrentItem(game);
 		if(typeof object == "undefined" || object.itemType != ITEM_TYPE.redWall) {
-			//移動先が赤い壁でなければ、endifまで、commandCountを飛ばす
+			// 移動先が赤い壁でなければ、endifまで、commandCountを飛ばす
 			var hasEndIf = false;
 			for(var i = game.commandCount; i < game.commandList.length; i++) {
 				if(game.commandList[i].commandType == COMMAND_TYPE.endif) {
@@ -59,7 +59,7 @@ var CommandRedWall = function(index) {
 					hasEndIf = true;
 					break;
 				}
-      }
+			}
 			if(!hasEndIf) {
 				game.commandCount++;
 			}
@@ -70,11 +70,11 @@ var CommandRedWall = function(index) {
 CommandRedWall.prototype = new Command;
 
 var CommandBlueWall = function(index) {
-	Command.apply(this, ["if ( isNextRedWall() ) {", "もし青いマスの上に乗ったら", index, COMMAND_TYPE.blueWall]);
+	Command.apply(this, ["if ( isNextRedWall() ) ", "もし青いマスの上に乗ったら", index, COMMAND_TYPE.blueWall]);
 	this.exec = function(game) {
 		var object = this.getCurrentItem(game);
 		if(typeof object == "undefined" || object.itemType != ITEM_TYPE.blueWall) {
-			//移動先が赤い壁でなければ、endifまで、commandCountを飛ばす
+			// 移動先が赤い壁でなければ、endifまで、commandCountを飛ばす
 			var hasEndIf = false;
 			for(var i = game.commandCount; i < game.commandList.length; i++) {
 				if(game.commandList[i].commandType == COMMAND_TYPE.endif) {
@@ -155,7 +155,7 @@ var samePositionCount = 0;
 var CommandGoStrate = function(index) {
 	Command.apply(this, ["goStrate();", "一歩進む", index, COMMAND_TYPE.goStrate]);
 	this.exec = function(game) {
-		//移動先を取得
+		// 移動先を取得
 		var object = this.getCurrentItem(game);
 		if(typeof object == "undefined") {
 			var position = this.getNextPosition(game);
@@ -196,21 +196,22 @@ var CommandGoStrate = function(index) {
 }
 CommandGoStrate.prototype = new Command;
 
-//var CommandGoTop = function(index) {
-//	Command.apply(this, ["goTop();", "命令の頭に戻る", index, COMMAND_TYPE.goTop]);
-//	this.exec = function(game) {
-//		return true;
-//	}
-//}
-//CommandGoTop.prototype = new Command;
+// var CommandGoTop = function(index) {
+// Command.apply(this, ["goTop();", "命令の頭に戻る", index, COMMAND_TYPE.goTop]);
+// this.exec = function(game) {
+// return true;
+// }
+// }
+// CommandGoTop.prototype = new Command;
 //
-//var CommandOneStep = function(index) {
-//	Command.apply(this, ["oneStep();", "ここまでの命令を実行する", index, COMMAND_TYPE.oneStep]);
-//	this.exec = function(game) {
-//		return true;
-//	}
-//}
-//CommandOneStep.prototype = new Command;
+// var CommandOneStep = function(index) {
+// Command.apply(this, ["oneStep();", "ここまでの命令を実行する", index,
+// COMMAND_TYPE.oneStep]);
+// this.exec = function(game) {
+// return true;
+// }
+// }
+// CommandOneStep.prototype = new Command;
 
 const COMMAND_TYPE = {
 	redWall : {commandObject : CommandRedWall, id : "redWall", startif : true},
@@ -219,7 +220,7 @@ const COMMAND_TYPE = {
 	turnRight : {commandObject : CommandTurnRight, id : "turnRight"},
 	turnLeft : {commandObject : CommandTurnLeft, id : "turnLeft"},
 	goStrate : {commandObject : CommandGoStrate, id : "goStrate"},
-//	goTop : {commandObject : CommandGoTop, id : "goTop"},
-//	oneStep : {commandObject : CommandOneStep, id : "oneStep"},
+// goTop : {commandObject : CommandGoTop, id : "goTop"},
+// oneStep : {commandObject : CommandOneStep, id : "oneStep"},
 };
 

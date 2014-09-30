@@ -37,6 +37,8 @@ Game.prototype = {
 		samePositionCount = 0;
 		this.redrawCommand();
 		this.redrawStep();
+		$("#redWall").removeAttr("disabled");
+		$("#endif").attr("disabled", "disabled");
 	},
 	drawChequered : function() {
 		var gameCanvas = this.canvas.getCanvas();
@@ -145,6 +147,11 @@ Game.prototype = {
 				ctx.fillStyle = "#fff";
 				ctx.fillRect(ownPositionX + 1, ownPositionY + 1, this.cell - 2,
 						this.cell - 2);
+				//自分の下が壁だったら壁を描画
+				var under = this.objects[this.stage.items[i].position.x][this.stage.items[i].position.y];
+				if(typeof under != "undefined") {
+					this.drawItem(ctx, under);
+				}
 				drawImage(ctx, this.stage.items[i], this.cell);
 			}
 		}
@@ -198,6 +205,7 @@ Game.prototype = {
 	stop : function() {
 		clearInterval(this.timer);
 		$("#run").removeAttr("disabled");
+		this.clearCommand();
 		this.initialize();
 	},
 	gameover : function() {
@@ -222,7 +230,7 @@ Game.prototype = {
 		}
 		$("#gameclear").show();
 		samePositionCount = 0;
-		
+
 		//点数表示
 		var commandSize = this.commandList.length;
 		var stepSize = this.stepCount;
@@ -282,6 +290,8 @@ Game.prototype = {
 	clearCommand : function() {
 		this.commandList = new Array();
 		this.redrawCommand();
+		$("#redWall").removeAttr("disabled");
+		$("#endif").attr("disabled", "disabled");
 	},
 	addCommand : function(targetCommand) {
 		var index = this.commandList.length;
@@ -293,6 +303,14 @@ Game.prototype = {
 			}
 		}
 		this.commandList.push(command);
+
+		if(targetCommand == COMMAND_TYPE.redWall) {
+			//もしボタンをdisableにして終わりをableに
+			$("#redWall").attr("disabled", "disabled");
+			$("#endif").removeAttr("disabled");
+		} else if(targetCommand == COMMAND_TYPE.endif) {
+			$("#endif").attr("disabled", "disabled");
+		}
 
 		this.redrawCommand();
 	},
@@ -327,6 +345,18 @@ Game.prototype = {
 			} else {
 				l.removeClass("indent");
 			}
+			if(strCommand.indexOf("if") != -1) {
+				l.addClass("startif");
+			} else if(strCommand.indexOf("}") != -1) {
+				//ひとつ上のlogicに { をつける
+				var startiftd = $(".startif");
+				if(startiftd.length != 0) {
+					var s = $(startiftd[startiftd.length - 1]);
+					if(s.html().indexOf("{") == -1) {
+						s.html(s.html() + "{");
+					}
+				}
+			}
 			l.html(strCommand);
 
 			if (this.commandList.length > i) {
@@ -348,7 +378,7 @@ Game.prototype = {
 				}
 			}
 		}
-		
+
 		//実行ボタンの押下制御
 		if(this.commandList.length == 0) {
 			$("#step").attr("disabled", "disabled");
