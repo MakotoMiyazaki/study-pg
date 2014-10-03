@@ -220,7 +220,8 @@ Game.prototype = {
 		clearInterval(this.drawScore3);
 		currentGame.stage.cleared = true;
 		$("#run").removeAttr("disabled");
-		$("#stop").attr("disabled", "disabled");
+		$(".runCommand").removeClass("currentCommand");
+//		$("#stop").attr("disabled", "disabled");
 		if (stageController.hasNext()) {
 			$(".init").hide();
 			$(".nextStage").show();
@@ -316,6 +317,7 @@ Game.prototype = {
 	},
 	redrawCommand : function() {
 		var startif = false;
+		$(".runCommand").removeClass("currentCommand");
 		for (var i = 0; i < commandMax; i++) {
 			var strCommand = "";
 			var strComment = "";

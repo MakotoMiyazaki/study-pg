@@ -119,8 +119,8 @@ input[type="button"] {
 .floatBox {
 	display: none;
 	position: absolute;
-	top: 130px;
-	left: 400px;
+	top: 50px;
+	left: 90px;
 	width: 400px;
 	height: 450px;
 	text-align: center;

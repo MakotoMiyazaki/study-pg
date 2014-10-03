@@ -116,7 +116,7 @@ var stageController = new StageController();
 	var stage = new Stage(cellType.large);
 	stage.addItem(new Item(new Position(0,2), ITEM_TYPE.own, directionType.east));
 	stage.addItem(new Item(new Position(3,2), ITEM_TYPE.goal));
-//	stageController.addStage(stage);
+	stageController.addStage(stage);
 }
 
 {
@@ -124,7 +124,7 @@ var stageController = new StageController();
 	stage.addItem(new Item(new Position(0, 3), ITEM_TYPE.own, directionType.north));
 	stage.addItem(new Item(new Position(1, 3), ITEM_TYPE.goal));
 	stage.setClearCondition(2, 10, 1, 4, 20);
-//	stageController.addStage(stage);
+	stageController.addStage(stage);
 }
 
 {
@@ -133,7 +133,7 @@ var stageController = new StageController();
 	stage.addItem(new Item(new Position(0, 1), ITEM_TYPE.redWall));
 	stage.addItem(new Item(new Position(3, 1), ITEM_TYPE.goal));
 	stage.setClearCondition(3, 10, 1, 5, 10);
-//	stageController.addStage(stage);
+	stageController.addStage(stage);
 }
 
 {
